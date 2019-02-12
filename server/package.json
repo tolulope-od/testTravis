@@ -14,9 +14,9 @@
   "author": "Toluwalope Odueke",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://www.bug.com"
   },
-  "homepage": "",
+  "homepage": "https://stuff.com",
   "dependencies": {
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
