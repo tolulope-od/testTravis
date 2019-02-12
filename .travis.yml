@@ -5,11 +5,10 @@ addons:
   code_climate:
     repo_token:
       secure: "X9IwGUp6IsnbwKeX6lletsrWIy2vd5UwDEYBuHMGrY5iM4Ki5CIE3E/03fKGy4ccIvO4iJTdAjfQ7MOdgPbzI2m9eQb4wg3L/KzYu1n+n//I9m8sEPNCwszeRwNjs7fVWLiJgGSSzYr3K8rFB1EaiGcIiHr1Q3W6Ur3ra8eib1CaHwE0+HNOu+NBQFKyDPP66nFdd9KHCZe5s1KeTVsct4n2kqjp4iYTvdr1qapjmHnP4CzCRTUPQ72GpYW83cWhS+fj/WtCk43xw+8VQeGM8O1nHu/HMnve+fUVwCW+QfdqLw2oifef/WV0KUaLcd0GfSSGpnU8KPni9LeaYi++4LK6AumQ4ZbG2kYIKiisCQllKcbZijiP/pX0FjP/NVN50lM39w28qFH5sbcA06Y4KByDs/9o/nCMivsTlVvJmvu5aNgAzQvnqvhCdHcUuGYiG/iy8d/ECKBqOJRb7V/Obz3IY48CRnip14nrLc0MkLbn4LSaC+XkuM+H9QUpqfg+GJWN1Rz3weZOfML5VB/vAT6lNjeoylTGCCdbhdqUyS5aaK4cb2njqMFtBmxu12Y6UiDbMcG1gdMtgWrBU+P82I+98vpW3WbowoOl8yst3v64jIelLvj3+DomwMFc/u32mXf88rLhni3BoPqcPvOObbbSRxLB2Ah87nT6RDifn2c="
-script: istanbul cover node_modules/.bin/mocha -- -R spec --compilers js:@babel/register
+script: nyc node_modules/.bin/mocha --reporter spec --compilers js:@babel/register
 before_script:
-  - npm install codeclimate-test-reporter istanbul -g
-after_script:
-  - codeclimate-test-reporter < ./coverage/lcov.info
+  - npm install codeclimate-test-reporter nyc coveralls cross-env -g
+after_script: cross-env NODE_ENV=test codeclimate-test-reporter < coverage/lcov.info && npm run coveralls && cat coverage/lcov.info
 cache:
   directories:
     - "node_modules"
