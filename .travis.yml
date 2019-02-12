@@ -8,7 +8,7 @@ addons:
 script: nyc node_modules/.bin/mocha --reporter spec --compilers js:@babel/register
 before_script:
   - npm install codeclimate-test-reporter nyc coveralls -g
-after_script: NODE_ENV=test nyc node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:@babel/register && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+after_script: NODE_ENV=test nyc node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:@babel/register && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 cache:
   directories:
     - "node_modules"
