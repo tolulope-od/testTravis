@@ -1,3 +1,5 @@
+// create meals model for api
+
 export default class Meals {
   constructor() {
     this.id = null;
